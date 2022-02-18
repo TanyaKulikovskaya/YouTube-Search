@@ -4,8 +4,8 @@
         <large-logo class="form-wrapper__logo"/>
         <h1 class="form-wrapper__title">Вход</h1>
         <form class="form" @submit.prevent="logIn">
-            <label for="login" class="form__label">Логин</label>
-            <input id="login" v-model="login" class="form__input" />
+            <label for="email" class="form__label">E-mail</label>
+            <input id="email" type="email" v-model="email" class="form__input" />
             <label for="password" class="form__label">Пароль</label>
             <div class="form-field">
               <input id="password" :type="passwordFieldType" v-model="password" class="form__input" />
@@ -26,8 +26,7 @@
             </div>
             <button class="btn btn--primary form__btn" type="submit">Войти</button>
         </form>
-      <p v-if="showError">{{ errorMessage }}</p>
-    </div>
+      </div>
 </template>
 <script>
 import largeLogo from '../components/largeLogo.vue';
@@ -39,11 +38,9 @@ export default {
   },
   data() {
     return {
-      login: '',
+      email: '',
       password: '',
       passwordFieldType: 'password',
-      showError: false,
-      errorMessage: '',
     };
   },
   methods: {
@@ -52,10 +49,14 @@ export default {
     },
     logIn() {
       const data = {
-        login: this.login,
+        email: this.email,
         password: this.password,
       };
-      console.log(data);
+      this.$store.dispatch('LOGIN', data)
+        .then(() => this.$router.push('/'))
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
