@@ -1,0 +1,63 @@
+@import '../../../node_modules/normalize-scss/sass/normalize/';
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:wght@400;500&display=swap');
+@import 'variables.scss';
+@include normalize();
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $main-bg-color;
+    color: $main-font-color;
+}
+
+h1 {
+    margin: 0;
+}
+
+input {
+    display: block;
+    width: 100%;
+    outline: none;
+    border: $secondary-border;
+    color: $dark;
+}
+
+label {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.container {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.form-wrapper {
+    max-width: 510px;
+    background-color: $white;
+}
+
+.btn {
+    border-radius: $small-radius;
+    padding: 14px 20px;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.btn--primary {
+    border: none;
+    background-color: $primary-blue;
+    color: $white;
+}
