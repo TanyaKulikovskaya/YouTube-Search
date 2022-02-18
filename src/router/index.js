@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import store from '../store';
 
+const Home = () => import('../views/home.vue');
 const Login = () => import('../views/login.vue');
 
 Vue.use(VueRouter);
@@ -10,8 +11,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'about',
-    component: () => import('../views/about.vue'),
+    name: 'home',
+    component: Home,
     meta: {
       requiresAuth: true,
     },

@@ -16,4 +16,7 @@ export default {
     }
     return response.data;
   },
+  logout() {
+    localStorage.removeItem('token');
+  },
 };

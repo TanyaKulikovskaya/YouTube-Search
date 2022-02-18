@@ -1,5 +1,5 @@
-/* eslint-disable max-len */
 <template>
+  <div class="container">
     <div class="form-wrapper">
         <large-logo class="form-wrapper__logo"/>
         <h1 class="form-wrapper__title">Вход</h1>
@@ -27,6 +27,7 @@
             <button class="btn btn--primary form__btn" type="submit">Войти</button>
         </form>
       </div>
+  </div>
 </template>
 <script>
 import largeLogo from '../components/largeLogo.vue';
@@ -62,6 +63,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.container {
+  height: 100vh;
+}
 .form-wrapper {
     position: absolute;
     top: 50%;

@@ -5,4 +5,7 @@ export default {
   AUTH_ERROR(state) {
     state.token = '';
   },
+  SET_LOGOUT(state) {
+    state.token = '';
+  },
 };

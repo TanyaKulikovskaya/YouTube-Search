@@ -1,12 +1,10 @@
 <template>
   <div id="app">
-    <div class="container">
-      <keep-alive>
-        <transition name="fade" mode="out-in">
-          <router-view />
-        </transition>
-        </keep-alive>
-      </div>
+    <keep-alive>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
+    </keep-alive>
   </div>
 </template>
 
@@ -15,7 +13,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
