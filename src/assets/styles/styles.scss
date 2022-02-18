@@ -19,6 +19,7 @@ body {
 
 h1 {
     margin: 0;
+    font-weight: normal;
 }
 
 a {
@@ -45,11 +46,6 @@ label {
     margin: 0 auto;
     padding-left: 40px;
     padding-right: 40px;
-}
-
-.form-wrapper {
-    max-width: 510px;
-    background-color: $white;
 }
 
 .btn {

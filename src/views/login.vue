@@ -71,6 +71,8 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 510px;
+    background-color: $white;
     border: $border;
     min-width: 510px;
     padding: 40px 0 60px;
