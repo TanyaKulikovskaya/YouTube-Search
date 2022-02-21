@@ -8,6 +8,6 @@
 
 <script>
 export default {
-  name: 'largeLogo',
+  name: 'LargeLogo',
 };
 </script>

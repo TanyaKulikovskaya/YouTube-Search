@@ -7,14 +7,23 @@
                         <tiny-logo class="menu__link" />
                     </router-link>
                     <router-link :to="{ name: 'home' }">
-                        <p class="menu__link link">Поиск</p>
+                        <span class="menu__link link">
+                            Поиск
+                        </span>
                     </router-link>
                     <router-link :to="{ name: 'login' }">
-                        <p class="menu__link link">Избранное</p>
+                        <span class="menu__link link">
+                            Избранное
+                        </span>
                     </router-link>
                 </div>
                 <div class="menu__actions">
-                    <span class="menu__btn link" @click="logout">Выйти</span>
+                    <span
+                        class="menu__btn link"
+                        @click="logout"
+                    >
+                        Выйти
+                    </span>
                 </div>
             </nav>
         </div>
@@ -22,12 +31,12 @@
 </template>
 
 <script>
-import tinyLogo from './tinyLogo.vue';
+import TinyLogo from './TinyLogo.vue';
 
 export default {
   name: 'the-header',
   components: {
-    tinyLogo,
+    TinyLogo,
   },
   data() {
     return {

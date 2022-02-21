@@ -3,39 +3,65 @@
         <div class="form-wrapper">
             <h1 class="form-wrapper__title">Поиск видео</h1>
             <form class="form">
-                <input class="form__input" />
-                <button class="btn--primary form__btn">Найти</button>
+                <input
+                  v-model="searchString"
+                  placeholder="Что хотите посмотреть?"
+                  class="form__input"
+                />
+                <button
+                  @click.prevent="handleSearchBtn"
+                  class="btn--primary form__btn"
+                >
+                  Найти
+                </button>
             </form>
       </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'search-form',
+  name: 'SearchForm',
+  data() {
+    return {
+      searchString: '',
+    };
+  },
+  methods: {
+    handleSearchBtn() {
+      const queryString = this.searchString.trim();
+      if (this.searchString !== '') {
+        this.$emit('search', queryString);
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .form-wrapper {
     max-width: 686px;
     margin: 220px auto 0;
+    text-align: center;
     &__title {
         font-size: 36px;
         line-height: 52px;
         color: $black;
+        margin-bottom: 40px;
     }
     .form {
         position: relative;
         &__input {
             height: 52px;
             border-radius: $radius;
-            border: $secondary-border;
             padding: 14px 15px;
             font-size: 20px;
             line-height: 24px;
-        }
-        :focus {
-            border: $primary-border;
-            background-color: $secondary-blue;
+            &::placeholder {
+                opacity: 0.3;
+            }
+            &:focus {
+                border: $primary-border;
+                background-color: $secondary-blue;
+            }
         }
         &__btn {
             position: absolute;

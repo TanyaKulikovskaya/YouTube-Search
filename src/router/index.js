@@ -3,8 +3,8 @@ import VueRouter from 'vue-router';
 
 import store from '../store';
 
-const Home = () => import('../views/home.vue');
-const Login = () => import('../views/login.vue');
+const Home = () => import('../views/Home.vue');
+const Login = () => import('../views/Login.vue');
 
 Vue.use(VueRouter);
 
