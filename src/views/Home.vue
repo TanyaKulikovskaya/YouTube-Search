@@ -7,16 +7,14 @@
     />
     <template v-else>
       <final-search-form @search="search" />
-      <search-results
-        :videos="videos"
-        :search="searchString"
-      />
+      <search-results :videos="videos" />
     </template>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 import TheHeader from '../components/TheHeader.vue';
 import InitialSearchForm from '../components/InitialSearchForm.vue';
 import FinalSearchForm from '../components/FinalSearchForm.vue';
@@ -35,7 +33,6 @@ export default {
   data() {
     return {
       videos: [],
-      searchString: '',
       api: {
         baseUrl: 'https://www.googleapis.com/youtube/v3/search?',
         part: 'snippet',
@@ -45,10 +42,12 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(['SEARCH_STRING']),
+  },
   methods: {
-    search(queryString) {
-      this.searchString = queryString;
-      this.api.q = queryString;
+    search() {
+      this.api.q = this.SEARCH_STRING;
       const {
         baseUrl, part, maxResults, q, key,
       } = this.api;

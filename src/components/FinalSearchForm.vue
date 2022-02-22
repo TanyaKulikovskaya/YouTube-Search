@@ -4,7 +4,7 @@
             <h1 class="form-wrapper__title">Поиск видео</h1>
             <form class="form">
                 <input
-                  v-model="searchString"
+                  v-model.trim="searchString"
                   placeholder="Что хотите посмотреть?"
                   class="form__input"
                 />
@@ -27,22 +27,30 @@
   </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'FinalSearchForm',
-  data() {
-    return {
-      searchString: '',
-    };
+  computed: {
+    ...mapGetters(['SEARCH_STRING']),
+    searchString: {
+      get() {
+        return this.SEARCH_STRING;
+      },
+      set(value) {
+        return this.SET_SEARCH_STRING(value);
+      },
+    },
   },
   methods: {
+    ...mapActions(['SET_SEARCH_STRING']),
+    handleSearchBtn() {
+      if (this.searchString !== '') {
+        this.$emit('search');
+      }
+    },
     handleSaveBtn() {
       console.log('save clicked');
-    },
-    handleSearchBtn() {
-      const queryString = this.searchString.trim();
-      if (this.searchString !== '') {
-        this.$emit('search', queryString);
-      }
     },
   },
 };

@@ -8,4 +8,7 @@ export default {
   SET_LOGOUT(state) {
     state.token = '';
   },
+  CHANGE_SEARCH_STRING(state, payload) {
+    state.searchString = payload;
+  },
 };

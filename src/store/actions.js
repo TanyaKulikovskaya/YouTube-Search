@@ -16,4 +16,7 @@ export default {
     AuthUser.logout();
     commit('SET_LOGOUT');
   },
+  SET_SEARCH_STRING({ commit }, payload) {
+    commit('CHANGE_SEARCH_STRING', payload);
+  },
 };
