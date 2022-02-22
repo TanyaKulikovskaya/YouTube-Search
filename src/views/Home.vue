@@ -5,12 +5,12 @@
       v-if="!videos.length > 0"
       @search="search"
     />
-    <template v-if="videos.length > 0">
+    <template v-else>
       <final-search-form @search="search" />
       <search-results
-      :videos="videos"
-      :search="searchString"
-    />
+        :videos="videos"
+        :search="searchString"
+      />
     </template>
     </div>
 </template>
@@ -56,7 +56,12 @@ export default {
       this.getData(apiUrl);
     },
     getData(apiUrl) {
-      axios.get(apiUrl)
+      axios.get(apiUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      })
         .then((response) => {
           this.videos = response.data.items;
         })

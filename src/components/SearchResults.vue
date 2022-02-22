@@ -39,22 +39,22 @@
           </div>
     </div>
     <div v-if="displayMode === 'list'">
-      <div class="videos-list">
+      <ul class="videos-list">
         <VideoListItem
             v-for="video in videos"
             :key="video.id.videoId"
             :video="video"
         />
-      </div>
+      </ul>
     </div>
     <div v-if="displayMode === 'grid'">
-      <div class="videos-grid">
+      <ul class="videos-grid">
         <VideoGridItem
             v-for="video in videos"
             :key="video.id.videoId"
             :video="video"
         />
-      </div>
+      </ul>
     </div>
   </div>
 </template>

@@ -52,7 +52,7 @@ export default {
         &__input {
             height: 52px;
             border-radius: $radius;
-            padding: 14px 15px;
+            padding: 14px 165px 14px 15px;
             font-size: 20px;
             line-height: 24px;
             &::placeholder {

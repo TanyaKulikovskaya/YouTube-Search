@@ -12,8 +12,8 @@
       />
     </a>
     <div class="video-item__body">
-      <h4 class="video-item__title">{{ video.snippet.title }}</h4>
-      <p class="video-item__subtitle">{{ video.snippet.channelTitle }}</p>
+      <h4 class="video-item__title">{{ video.snippet.title | unescape}}</h4>
+      <p class="video-item__subtitle">{{ video.snippet.channelTitle | unescape}}</p>
     </div>
   </li>
 </template>
@@ -29,9 +29,6 @@ export default {
       },
     },
   },
-  created() {
-    console.log(this.video.snippet);
-  },
 };
 </script>
 <style lang="scss" scoped>
@@ -40,8 +37,6 @@ export default {
             display: block;
             width: 100%;
             height: 138px;
-        }
-        &__img {
             margin-bottom: 8px;
         }
         &__body {

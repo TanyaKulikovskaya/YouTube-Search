@@ -38,10 +38,6 @@ export default {
   components: {
     TinyLogo,
   },
-  data() {
-    return {
-    };
-  },
   methods: {
     logout() {
       this.$store.dispatch('LOGOUT')
