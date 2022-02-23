@@ -34,7 +34,7 @@
                 v-model="password"
                 class="form__input"
               />
-              <button
+              <span
                 @click="switchPasswordFieldType"
                 class="form-field__btn"
               >
@@ -50,7 +50,7 @@
                     <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#1390E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </template>
-              </button>
+              </span>
             </div>
             <button
               type="submit"
@@ -105,10 +105,9 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 510px;
+    width: 510px;
     background-color: $white;
     border: $border;
-    min-width: 510px;
     padding: 40px 0 60px;
     &__title {
       font-weight: 500;
@@ -160,10 +159,13 @@ export default {
           border-bottom-right-radius: $radius;
           background-color: transparent;
           cursor: pointer;
+          display: flex;
+          align-items: center;
         }
       }
       &__btn {
         min-width: 176px;
+        border-radius: $small-radius;
       }
     }
 }

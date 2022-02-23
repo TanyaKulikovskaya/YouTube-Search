@@ -9,6 +9,7 @@
                   class="form__input"
                 />
                 <span
+                  v-if="searchString"
                   @click.prevent="handleSaveBtn"
                   class="form__btn form__btn--icon"
                 >
@@ -43,14 +44,14 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['SET_SEARCH_STRING']),
+ ...mapActions(['SET_SEARCH_STRING']),
     handleSearchBtn() {
       if (this.searchString !== '') {
         this.$emit('search');
-      }
-    },
+       }
+     },
     handleSaveBtn() {
-      console.log('save clicked');
+      this.$emit('save');
     },
   },
 };
