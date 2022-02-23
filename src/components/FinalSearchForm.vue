@@ -4,11 +4,12 @@
             <h1 class="form-wrapper__title">Поиск видео</h1>
             <form class="form">
                 <input
-                  v-model="searchString"
+                  v-model.trim="searchString"
                   placeholder="Что хотите посмотреть?"
                   class="form__input"
                 />
                 <span
+                  v-if="searchString"
                   @click.prevent="handleSaveBtn"
                   class="form__btn form__btn--icon"
                 >
@@ -36,12 +37,11 @@ export default {
   },
   methods: {
     handleSaveBtn() {
-      console.log('save clicked');
+      this.$emit('save');
     },
     handleSearchBtn() {
-      const queryString = this.searchString.trim();
       if (this.searchString !== '') {
-        this.$emit('search', queryString);
+        this.$emit('search', this.searchString);
       }
     },
   },

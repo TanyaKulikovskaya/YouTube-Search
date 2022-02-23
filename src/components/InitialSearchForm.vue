@@ -4,7 +4,7 @@
             <h1 class="form-wrapper__title">Поиск видео</h1>
             <form class="form">
                 <input
-                  v-model="searchString"
+                  v-model.trim="searchString"
                   placeholder="Что хотите посмотреть?"
                   class="form__input"
                 />
@@ -28,9 +28,8 @@ export default {
   },
   methods: {
     handleSearchBtn() {
-      const queryString = this.searchString.trim();
       if (this.searchString !== '') {
-        this.$emit('search', queryString);
+        this.$emit('search', this.searchString);
       }
     },
   },

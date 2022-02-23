@@ -61,7 +61,6 @@ label {
 }
 
 .btn {
-    border-radius: $small-radius;
     padding: 14px 20px;
     font-size: 20px;
     line-height: 24px;
@@ -71,4 +70,10 @@ label {
     border: none;
     background-color: $primary-blue;
     color: $white;
+}
+
+.btn--secondary {
+    background-color: $white;
+    color: $primary-blue;
+    border: $primary-border;
 }

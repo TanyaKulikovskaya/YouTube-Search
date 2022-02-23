@@ -11,7 +11,7 @@
                             Поиск
                         </span>
                     </router-link>
-                    <router-link :to="{ name: 'login' }">
+                    <router-link :to="{ name: 'favourites' }">
                         <span class="menu__link link">
                             Избранное
                         </span>
@@ -66,7 +66,7 @@ export default {
                 align-items: center;
                 height: 100%;
                 a {
-                color: $secondary-gray;
+                    color: $secondary-gray;
                 }
             }
             .menu__link  {
@@ -82,12 +82,12 @@ export default {
                 font-size: 18px;
                 line-height: 28px;
             }
-            .router-link-active {
+            .router-link-exact-active {
                 color: $primary-blue;
-                p {
+                span {
                     position: relative;
                 }
-                p::after {
+                span::after {
                     content: '';
                     display: block;
                     position: absolute;

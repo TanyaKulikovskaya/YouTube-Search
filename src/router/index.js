@@ -5,6 +5,7 @@ import store from '../store';
 
 const Home = () => import('../views/Home.vue');
 const Login = () => import('../views/Login.vue');
+const Favourites = () => import('../views/Favourites.vue');
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
+  },
+  {
+    path: '/favourites',
+    name: 'favourites',
+    component: Favourites,
   },
 ];
 

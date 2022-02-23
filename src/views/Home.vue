@@ -6,13 +6,21 @@
       @search="search"
     />
     <template v-else>
-      <final-search-form @search="search" />
+      <final-search-form
+        @search="search"
+        @save="showModal"
+      />
       <search-results
         :videos="videos"
         :search="searchString"
       />
     </template>
-    </div>
+    <modal
+        :request="searchString"
+        v-show="isModalVisible"
+        @close="closeModal"
+      />
+  </div>
 </template>
 
 <script>
@@ -21,6 +29,7 @@ import TheHeader from '../components/TheHeader.vue';
 import InitialSearchForm from '../components/InitialSearchForm.vue';
 import FinalSearchForm from '../components/FinalSearchForm.vue';
 import SearchResults from '../components/SearchResults.vue';
+import Modal from '../components/Modal.vue';
 
 import apiKey from '../../config';
 
@@ -31,6 +40,7 @@ export default {
     InitialSearchForm,
     FinalSearchForm,
     SearchResults,
+    Modal,
   },
   data() {
     return {
@@ -43,6 +53,7 @@ export default {
         q: '',
         key: apiKey.YOUTUBE_API_KEY,
       },
+      isModalVisible: false,
     };
   },
   methods: {
@@ -56,18 +67,19 @@ export default {
       this.getData(apiUrl);
     },
     getData(apiUrl) {
-      axios.get(apiUrl, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      })
+      axios.get(apiUrl)
         .then((response) => {
           this.videos = response.data.items;
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
     },
   },
 };
