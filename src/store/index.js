@@ -10,6 +10,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     token: localStorage.getItem('token') || '',
+    searchString: '',
   },
   mutations,
   actions,

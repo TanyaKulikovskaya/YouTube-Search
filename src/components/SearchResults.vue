@@ -5,7 +5,7 @@
   >
     <div class="results-header">
         <div class="results-header__content">
-            <h3 class="results-header__title">Видео по запросу  <span>«{{ search }}»</span></h3>
+            <h3 class="results-header__title">Видео по запросу  <span v-if="SEARCH_STRING">«{{ SEARCH_STRING }}»</span></h3>
         </div>
         <div class="results-header__actions">
           <button
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import VideoGridItem from './VideoGridItem.vue';
 import VideoListItem from './VideoListItem.vue';
 
@@ -72,10 +73,6 @@ export default {
         return [];
       },
     },
-    search: {
-      type: String,
-      default: '',
-    },
   },
   components: {
     VideoGridItem,
@@ -85,6 +82,9 @@ export default {
     return {
       displayMode: 'list',
     };
+  },
+  computed: {
+    ...mapGetters(['SEARCH_STRING']),
   },
   methods: {
     changeDisplayMode(displayMode) {

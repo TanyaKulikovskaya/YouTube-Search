@@ -19,17 +19,27 @@
   </div>
 </template>
 <script>
+
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'SearchForm',
-  data() {
-    return {
-      searchString: '',
-    };
+  computed: {
+    ...mapGetters(['SEARCH_STRING']),
+    searchString: {
+      get() {
+        return this.SEARCH_STRING;
+      },
+      set(value) {
+        return this.SET_SEARCH_STRING(value);
+      },
+    },
   },
   methods: {
+    ...mapActions(['SET_SEARCH_STRING']),
     handleSearchBtn() {
       if (this.searchString !== '') {
-        this.$emit('search', this.searchString);
+        this.$emit('search');
       }
     },
   },

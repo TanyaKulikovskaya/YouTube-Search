@@ -28,21 +28,30 @@
   </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'FinalSearchForm',
-  data() {
-    return {
-      searchString: '',
-    };
+  computed: {
+    ...mapGetters(['SEARCH_STRING']),
+    searchString: {
+      get() {
+        return this.SEARCH_STRING;
+      },
+      set(value) {
+        return this.SET_SEARCH_STRING(value);
+      },
+    },
   },
   methods: {
-    handleSaveBtn() {
-      this.$emit('save');
-    },
+ ...mapActions(['SET_SEARCH_STRING']),
     handleSearchBtn() {
       if (this.searchString !== '') {
-        this.$emit('search', this.searchString);
-      }
+        this.$emit('search');
+       }
+     },
+    handleSaveBtn() {
+      this.$emit('save');
     },
   },
 };
