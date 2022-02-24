@@ -27,6 +27,9 @@ const routes = [
     path: '/favourites',
     name: 'favourites',
     component: Favourites,
+    meta: {
+      requiresAuth: true,
+    },
   },
 ];
 
