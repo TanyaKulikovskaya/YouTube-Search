@@ -4,6 +4,7 @@
         class="modal-backdrop"
         @click="close"
     >
+    </div>
     <div class="modal">
         <h2 class="modal__title">Сохранить запрос</h2>
         <form class="form">
@@ -19,22 +20,31 @@
               class="form__input"
               disabled
             />
+            <label
+              for="requestTitle"
+              class="form__label"
+            >
+              <span>*</span> Название
+            </label>
+            <input
+              id="requestTitle"
+              v-model="requestTitle"
+              class="form__input"
+            />
             <div class="form__actions">
                 <button
-                    class="btn btn--secondary form__btn"
-                    @click="close"
-                >
+                  class="btn btn--secondary form__btn"
+                  @click.prevent="close">
                     Не сохранять
                 </button>
                 <button
                     class="btn btn--primary form__btn"
-                    @click="close"
+                    @click.prevent="saveRequest"
                 >
                     Сохранить
                 </button>
             </div>
         </form>
-       </div>
     </div>
   </div>
 </template>
@@ -48,9 +58,21 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      requestTitle: '',
+    };
+  },
   methods: {
     close() {
       this.$emit('close');
+    },
+    saveRequest() {
+      const data = {
+        request: this.request,
+        requestTitle: this.requestTitle,
+      };
+      this.$emit('save', data);
     },
   },
 };
@@ -91,6 +113,9 @@ export default {
             font-size: 16px;
             line-height: 22px;
             color: $dark;
+            span {
+              color: #ff0000;
+            }
         }
         &__input {
             height: 48px;
@@ -110,16 +135,4 @@ export default {
         }
     }
 }
-
-// .modal-fade {
-//     &-enter-active,
-//     &-leave-active {
-//       transition: all .5s ease;
-//     }
-//     &-enter-from,
-//     &-leave-to {
-//       opacity: 0;
-//       transform: scale(0.9);
-//     }
-// }
 </style>

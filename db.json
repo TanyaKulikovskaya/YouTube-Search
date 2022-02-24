@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "email": "admin@example.com",
-      "password": "$2a$10$DSlD9A9UCFacKz7wm2pg5OMUWzLTRFIP/su31NLeQTHBe/mzAJXD6",
-      "id": 4
-    },
-    {
       "email": "user@example.com",
       "password": "$2a$10$s5AXsG8jfUN0g7Afz899vee/pW.yAmMGfcG5bJJY2jOkxCaQ1sMQS",
       "id": 5
+    },
+    {
+      "email": "dev@example.com",
+      "password": "$2a$10$gFI8kJSpTFQGqwPRw3FhjeZTbtIpj3nvjMlch/GeP.qfRFBVuSTne",
+      "id": 6
     }
   ]
 }

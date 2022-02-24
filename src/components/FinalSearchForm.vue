@@ -44,12 +44,12 @@ export default {
     },
   },
   methods: {
- ...mapActions(['SET_SEARCH_STRING']),
+    ...mapActions(['SET_SEARCH_STRING']),
     handleSearchBtn() {
       if (this.searchString !== '') {
         this.$emit('search');
-       }
-     },
+      }
+    },
     handleSaveBtn() {
       this.$emit('save');
     },
@@ -107,5 +107,4 @@ export default {
         }
     }
 }
-
 </style>

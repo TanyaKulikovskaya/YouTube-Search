@@ -5,7 +5,7 @@
   >
     <div class="results-header">
         <div class="results-header__content">
-            <h3 class="results-header__title">Видео по запросу  <span v-if="SEARCH_STRING">«{{ SEARCH_STRING }}»</span></h3>
+            <h3 class="results-header__title">Видео по запросу</h3>
         </div>
         <div class="results-header__actions">
           <button
@@ -108,9 +108,6 @@ export default {
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    span {
-      font-weight: 500;
-    }
   }
   &__icon:not(:last-child) {
     margin-right: 20px;

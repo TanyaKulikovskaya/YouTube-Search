@@ -63,6 +63,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 import LargeLogo from '../components/LargeLogo.vue';
 
 export default {
@@ -78,6 +79,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['LOGIN']),
     switchPasswordFieldType() {
       this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
     },
@@ -86,7 +88,7 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store.dispatch('LOGIN', data)
+      this.LOGIN(data)
         .then(() => this.$router.push('/'))
         .catch((error) => {
           console.log(error);

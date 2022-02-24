@@ -13,9 +13,10 @@
       <search-results :videos="videos" />
     </template>
     <modal
-        :request="searchString"
-        v-show="isModalVisible"
+        v-if="isModalVisible"
+        :request="SEARCH_STRING"
         @close="closeModal"
+        @save="saveRequestToFavourites"
       />
   </div>
 </template>
@@ -79,6 +80,10 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    saveRequestToFavourites(data) {
+      this.isModalVisible = false;
+      console.log(data);
     },
   },
 };
