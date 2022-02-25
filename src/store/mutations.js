@@ -8,7 +8,13 @@ export default {
   SET_LOGOUT(state) {
     state.token = '';
   },
-  CHANGE_SEARCH_STRING(state, payload) {
-    state.searchString = payload;
+  CHANGE_SEARCH_STRING(state, query) {
+    state.searchString = query;
+  },
+  SET_REQUEST_TO_FAVOURITES(state, request) {
+    state.favourites.push(request);
+  },
+  CLEAR_FAVOURITES(state) {
+    state.favourites = JSON.parse('[]');
   },
 };

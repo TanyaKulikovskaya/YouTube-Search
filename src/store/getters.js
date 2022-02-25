@@ -5,4 +5,7 @@ export default {
   SEARCH_STRING(state) {
     return state.searchString;
   },
+  FAVOURITES(state) {
+    return state.favourites;
+  },
 };

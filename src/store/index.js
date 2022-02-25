@@ -11,6 +11,7 @@ const store = new Vuex.Store({
   state: {
     token: localStorage.getItem('token') || '',
     searchString: '',
+    favourites: JSON.parse(localStorage.getItem('favourites') || '[]'),
   },
   mutations,
   actions,

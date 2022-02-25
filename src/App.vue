@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <transition name="fade" mode="out-in">
+    <transition name="fade" mode="out-in">
         <router-view />
       </transition>
-    </keep-alive>
-  </div>
+    </div>
 </template>
 
 <style lang="scss">

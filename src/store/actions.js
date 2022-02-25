@@ -1,4 +1,5 @@
 import AuthUser from '../services/AuthUser';
+import FavouritesUser from '../services/FavouritesUser';
 
 export default {
   LOGIN({ commit }, credentials) {
@@ -15,8 +16,14 @@ export default {
   LOGOUT({ commit }) {
     AuthUser.logout();
     commit('SET_LOGOUT');
+    FavouritesUser.clearFavourites();
+    commit('CLEAR_FAVOURITES');
   },
   SET_SEARCH_STRING({ commit }, payload) {
     commit('CHANGE_SEARCH_STRING', payload);
+  },
+  ADD_REQUEST_TO_FAVOURITES({ commit }, request) {
+    FavouritesUser.addRequestToFavourites(request);
+    commit('SET_REQUEST_TO_FAVOURITES', request);
   },
 };

@@ -23,7 +23,7 @@
 
 <script>
 import axios from 'axios';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import TheHeader from '../components/TheHeader.vue';
 import InitialSearchForm from '../components/InitialSearchForm.vue';
 import FinalSearchForm from '../components/FinalSearchForm.vue';
@@ -58,6 +58,7 @@ export default {
     ...mapGetters(['SEARCH_STRING']),
   },
   methods: {
+    ...mapActions(['ADD_REQUEST_TO_FAVOURITES']),
     search() {
       this.api.q = this.SEARCH_STRING;
       const {
@@ -83,7 +84,7 @@ export default {
     },
     saveRequestToFavourites(data) {
       this.isModalVisible = false;
-      console.log(data);
+      this.ADD_REQUEST_TO_FAVOURITES(data);
     },
   },
 };
