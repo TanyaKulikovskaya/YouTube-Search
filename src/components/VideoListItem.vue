@@ -34,7 +34,9 @@ export default {
 <style lang="scss" scoped>
 .video-item {
   display: flex;
-  margin-bottom: 32px;
+  &:not(:last-child) {
+    margin-bottom: 32px;
+  }
   a {
     display: block;
     width: 157px;

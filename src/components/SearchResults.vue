@@ -4,9 +4,7 @@
     :class="{ right: displayMode === 'list' }"
   >
     <div class="results-header">
-        <div class="results-header__content">
-            <h3 class="results-header__title">Видео по запросу</h3>
-        </div>
+        <h3 class="results-header__title">Видео по запросу</h3>
         <div class="results-header__actions">
           <button
                 @click="changeDisplayMode('list')"
@@ -109,6 +107,10 @@ export default {
     font-size: 16px;
     line-height: 24px;
   }
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
   &__icon:not(:last-child) {
     margin-right: 20px;
   }
@@ -125,11 +127,13 @@ export default {
 .videos-list {
   display: flex;
   flex-direction: column;
+  padding-bottom: 28px;
 }
 .videos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 245px);
   gap: 28px 20px;
   justify-content: center;
+  padding-bottom: 28px;
 }
 </style>

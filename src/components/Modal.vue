@@ -8,7 +8,8 @@
     <div class="modal">
         <h2 class="modal__title">Сохранить запрос</h2>
         <form class="form">
-            <label
+          <div class="form-field">
+             <label
               for="request"
               class="form__label"
             >
@@ -20,17 +21,27 @@
               class="form__input"
               disabled
             />
+          </div>
+          <div class="form-field">
             <label
               for="requestTitle"
               class="form__label"
             >
-              <span>*</span> Название
+              <span class="error">*</span> Название
             </label>
             <input
               id="requestTitle"
               v-model="requestTitle"
               class="form__input"
+              @blur="$v.requestTitle.$touch()"
             />
+            <span
+              v-if="$v.requestTitle.$error"
+              class="error form__error"
+            >
+              Название обязательно для заполнения
+            </span>
+            </div>
             <div class="form__actions">
                 <button
                   class="btn btn--secondary form__btn"
@@ -39,6 +50,7 @@
                 </button>
                 <button
                     class="btn btn--primary form__btn"
+                    :disabled="$v.$invalid"
                     @click.prevent="saveRequest"
                 >
                     Сохранить
@@ -50,6 +62,8 @@
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators';
+
 export default {
   name: 'Modal',
   props: {
@@ -62,6 +76,11 @@ export default {
     return {
       requestTitle: '',
     };
+  },
+  validations: {
+    requestTitle: {
+      required,
+    },
   },
   methods: {
     close() {
@@ -109,13 +128,14 @@ export default {
         margin-bottom: 36px;
     }
     .form {
+        .form-field {
+          position: relative;
+          margin-bottom: 24px;
+        }
         &__label {
             font-size: 16px;
             line-height: 22px;
             color: $dark;
-            span {
-              color: #ff0000;
-            }
         }
         &__input {
             height: 48px;
@@ -123,7 +143,10 @@ export default {
             padding: 12px 15px;
             font-size: 20px;
             line-height: 24px;
-            margin-bottom: 24px;
+        }
+        &__error {
+          position: absolute;
+          font-size: 14px;
         }
         &__actions {
             display: flex;
@@ -132,6 +155,9 @@ export default {
         &__btn {
             min-width: 210px;
             border-radius: $radius;
+            &:disabled {
+              opacity: 0.5;
+            }
         }
     }
 }
