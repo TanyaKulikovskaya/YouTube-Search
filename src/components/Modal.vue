@@ -7,7 +7,10 @@
     </div>
     <div class="modal">
         <h2 class="modal__title">Сохранить запрос</h2>
-        <form class="form">
+        <form
+          @csubmit.prevent="saveRequest"
+          class="form"
+        >
           <div class="form-field">
              <label
               for="request"
@@ -49,9 +52,9 @@
                     Не сохранять
                 </button>
                 <button
-                    class="btn btn--primary form__btn"
-                    :disabled="$v.$invalid"
-                    @click.prevent="saveRequest"
+                  type="submit"
+                  class="btn btn--primary form__btn"
+                  :disabled="$v.$invalid"
                 >
                     Сохранить
                 </button>
@@ -146,6 +149,7 @@ export default {
         }
         &__error {
           position: absolute;
+          left: 0;
           font-size: 14px;
         }
         &__actions {
@@ -155,9 +159,6 @@ export default {
         &__btn {
             min-width: 210px;
             border-radius: $radius;
-            &:disabled {
-              opacity: 0.5;
-            }
         }
     }
 }

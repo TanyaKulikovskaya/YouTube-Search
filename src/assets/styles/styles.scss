@@ -70,6 +70,9 @@ label {
     border: none;
     background-color: $primary-blue;
     color: $white;
+    &:disabled {
+        opacity: 0.5;
+    }
 }
 
 .btn--secondary {

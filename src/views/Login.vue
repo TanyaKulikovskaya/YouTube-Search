@@ -9,6 +9,7 @@
           class="form"
           @submit.prevent="logIn"
         >
+          <div class="form-field">
             <label
               for="email"
               class="form__label"
@@ -20,19 +21,33 @@
               type="email"
               v-model="email"
               class="form__input"
+               @blur="$v.email.$touch()"
             />
-            <label
-              for="password"
-              class="form__label"
+            <span
+              v-if="$v.email.$error"
+              class="error form__error"
             >
-              Пароль
-            </label>
+              <template v-if="!$v.email.required">
+                Поле обязательно для заполнения
+              </template>
+              <template v-else>
+                Поле должно быть валидно
+              </template>
+            </span>
+          </div>
             <div class="form-field">
+              <label
+                for="password"
+                class="form__label"
+              >
+                Пароль
+              </label>
               <input
                 id="password"
                 :type="passwordFieldType"
                 v-model="password"
                 class="form__input"
+                 @blur="$v.password.$touch()"
               />
               <span
                 @click="switchPasswordFieldType"
@@ -51,10 +66,17 @@
                   </svg>
                 </template>
               </span>
+               <span
+                  v-if="$v.password.$error"
+                  class="error form__error"
+              >
+                Поле обязательно для заполнения
+              </span>
             </div>
             <button
               type="submit"
               class="btn btn--primary form__btn"
+              :disabled="$v.$invalid"
             >
               Войти
             </button>
@@ -63,6 +85,7 @@
   </div>
 </template>
 <script>
+import { required, email } from 'vuelidate/lib/validators';
 import { mapActions } from 'vuex';
 import LargeLogo from '../components/LargeLogo.vue';
 
@@ -77,6 +100,15 @@ export default {
       password: '',
       passwordFieldType: 'password',
     };
+  },
+  validations: {
+    email: {
+      required,
+      email,
+    },
+    password: {
+      required,
+    },
   },
   methods: {
     ...mapActions(['LOGIN']),
@@ -142,17 +174,17 @@ export default {
           }
         }
       }
-      &__input:not(:last-of-type) {
-        margin-bottom: 20px;
-      }
-      &__input:last-of-type {
-        margin-bottom: 40px;
+      &__error {
+          position: absolute;
+          left: 0;
+          font-size: 14px;
       }
       .form-field {
         position: relative;
+        margin-bottom: 24px;
         &__btn {
           position: absolute;
-          top: 1px;
+          top: 22px;
           right: 12px;
           z-index: 2;
           border: none;
