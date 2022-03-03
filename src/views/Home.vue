@@ -54,6 +54,11 @@ export default {
       isModalVisible: false,
     };
   },
+  mounted() {
+    if (this.SEARCH_STRING && !this.videos.length > 0) {
+      this.search();
+    }
+  },
   computed: {
     ...mapGetters(['SEARCH_STRING']),
   },

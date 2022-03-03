@@ -67,9 +67,7 @@ export default {
   props: {
     videos: {
       type: Array,
-      default() {
-        return [];
-      },
+      default: () => ([]),
     },
   },
   components: {

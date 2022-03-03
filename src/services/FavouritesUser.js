@@ -7,4 +7,9 @@ export default {
   clearFavourites() {
     localStorage.removeItem('favourites');
   },
+  deleteRequestFromFavourites(index) {
+    const favourites = JSON.parse(localStorage.getItem('favourites') || '[]');
+    favourites.splice(index, 1);
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+  },
 };

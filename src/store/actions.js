@@ -26,4 +26,8 @@ export default {
     FavouritesUser.addRequestToFavourites(request);
     commit('SET_REQUEST_TO_FAVOURITES', request);
   },
+  DELETE_REQUEST_FROM_FAVOURITES({ commit }, index) {
+    FavouritesUser.deleteRequestFromFavourites(index);
+    commit('REMOVE_REQUEST_FROM_FAVOURITES', index);
+  },
 };

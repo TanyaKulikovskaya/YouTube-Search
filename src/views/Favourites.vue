@@ -8,30 +8,81 @@
                     v-if="FAVOURITES.length > 0"
                     class="favourites-list"
                 >
-                    <li
+                    <FavouritesItem
                         v-for="(item, index) in FAVOURITES"
                         :key="index"
-                        class="favourites-list__item"
-                    >
-                        {{ item.requestTitle }}
-                    </li>
+                        :favourites_item="item"
+                        @executeItem="executeFavouritesItem(index)"
+                        @editItem="editFavouritesItem(index)"
+                        @removeItem="removeFavouritesItem(index)"
+                    />
                 </ul>
             </div>
         </div>
+        <modal
+            v-if="isModalVisible"
+            :request="request"
+            :isRequestEditable=true
+            @close="closeModal"
+            @save="saveChangedRequest"
+        >
+            <template v-slot:header>
+                Изменить запрос
+            </template>
+            <template v-slot:cancel>
+                Не изменять
+            </template>
+            <template v-slot:action>
+                Изменить
+            </template>
+        </modal>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import TheHeader from '../components/TheHeader.vue';
+import FavouritesItem from '../components/FavouritesItem.vue';
+import Modal from '../components/Modal.vue';
 
 export default {
   name: 'Favourites',
   components: {
     TheHeader,
+    FavouritesItem,
+    Modal,
+  },
+  data() {
+    return {
+      isModalVisible: false,
+      request: '',
+    };
   },
   computed: {
     ...mapGetters(['FAVOURITES']),
+  },
+  methods: {
+    ...mapActions(['DELETE_REQUEST_FROM_FAVOURITES']),
+    ...mapActions(['SET_SEARCH_STRING']),
+    executeFavouritesItem(index) {
+      const searchRequest = this.FAVOURITES[index].request;
+      this.SET_SEARCH_STRING(searchRequest);
+      this.$router.push('/');
+    },
+    editFavouritesItem(index) {
+      this.isModalVisible = true;
+      this.request = this.FAVOURITES[index].request;
+    },
+    removeFavouritesItem(index) {
+      this.DELETE_REQUEST_FROM_FAVOURITES(index);
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+    saveChangedRequest(data) {
+      this.isModalVisible = false;
+      console.log(data);
+    },
   },
 };
 </script>
@@ -50,12 +101,5 @@ export default {
     .favourites-list {
         background-color: $white;
         border-radius: $radius;
-        &__item {
-            padding: 14px 20px;
-            border-bottom: 1px solid #f1f1f1;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 20px;
-        }
     }
 </style>

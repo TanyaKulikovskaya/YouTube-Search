@@ -17,4 +17,7 @@ export default {
   CLEAR_FAVOURITES(state) {
     state.favourites = JSON.parse('[]');
   },
+  REMOVE_REQUEST_FROM_FAVOURITES(state, index) {
+    state.favourites.splice(index, 1);
+  },
 };

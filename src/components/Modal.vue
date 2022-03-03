@@ -6,10 +6,14 @@
     >
     </div>
     <div class="modal">
-        <h2 class="modal__title">Сохранить запрос</h2>
+        <h2 class="modal__title">
+          <slot name="header">
+            Сохранить запрос
+          </slot>
+        </h2>
         <form
-          @csubmit.prevent="saveRequest"
           class="form"
+          @submit.prevent="saveRequest"
         >
           <div class="form__fields">
             <div class="form-field">
@@ -21,10 +25,17 @@
               </label>
               <input
                 id="request"
-                v-model="request"
+                v-model="requestValue"
                 class="form__input"
-                disabled
+                @blur="$v.requestValue.$touch()"
+                :disabled="!isRequestEditable"
               />
+              <span
+                v-if="$v.requestValue.$error"
+                class="error form__error"
+              >
+                Поле обязательно для заполнения
+              </span>
               </div>
             <div class="form-field">
               <label
@@ -50,15 +61,20 @@
           <div class="form__actions">
             <button
               class="btn btn--secondary form__btn"
-              @click.prevent="close">
+              @click.prevent="close"
+            >
+              <slot name="cancel">
                 Не сохранять
+              </slot>
             </button>
             <button
               type="submit"
               class="btn btn--primary form__btn"
               :disabled="$v.$invalid"
             >
-              Сохранить
+              <slot name="action">
+                Сохранить
+              </slot>
             </button>
           </div>
         </form>
@@ -76,13 +92,21 @@ export default {
       type: String,
       default: '',
     },
+    isRequestEditable: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
+      requestValue: this.request,
       requestTitle: '',
     };
   },
   validations: {
+    requestValue: {
+      required,
+    },
     requestTitle: {
       required,
     },
