@@ -11,54 +11,56 @@
           @csubmit.prevent="saveRequest"
           class="form"
         >
-          <div class="form-field">
-             <label
-              for="request"
-              class="form__label"
-            >
-              Запрос
-            </label>
-            <input
-              id="request"
-              v-model="request"
-              class="form__input"
-              disabled
-            />
+          <div class="form__fields">
+            <div class="form-field">
+              <label
+                for="request"
+                class="form__label"
+              >
+                Запрос
+              </label>
+              <input
+                id="request"
+                v-model="request"
+                class="form__input"
+                disabled
+              />
+              </div>
+            <div class="form-field">
+              <label
+                for="requestTitle"
+                class="form__label"
+              >
+                <span class="error">*</span> Название
+              </label>
+              <input
+                id="requestTitle"
+                v-model="requestTitle"
+                class="form__input"
+                @blur="$v.requestTitle.$touch()"
+              />
+              <span
+                v-if="$v.requestTitle.$error"
+                class="error form__error"
+              >
+                Название обязательно для заполнения
+              </span>
+            </div>
           </div>
-          <div class="form-field">
-            <label
-              for="requestTitle"
-              class="form__label"
+          <div class="form__actions">
+            <button
+              class="btn btn--secondary form__btn"
+              @click.prevent="close">
+                Не сохранять
+            </button>
+            <button
+              type="submit"
+              class="btn btn--primary form__btn"
+              :disabled="$v.$invalid"
             >
-              <span class="error">*</span> Название
-            </label>
-            <input
-              id="requestTitle"
-              v-model="requestTitle"
-              class="form__input"
-              @blur="$v.requestTitle.$touch()"
-            />
-            <span
-              v-if="$v.requestTitle.$error"
-              class="error form__error"
-            >
-              Название обязательно для заполнения
-            </span>
-            </div>
-            <div class="form__actions">
-                <button
-                  class="btn btn--secondary form__btn"
-                  @click.prevent="close">
-                    Не сохранять
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn--primary form__btn"
-                  :disabled="$v.$invalid"
-                >
-                    Сохранить
-                </button>
-            </div>
+              Сохранить
+            </button>
+          </div>
         </form>
     </div>
   </div>
@@ -131,9 +133,12 @@ export default {
         margin-bottom: 36px;
     }
     .form {
+        &__fields {
+          margin-bottom: 12px;
+        }
         .form-field {
           position: relative;
-          margin-bottom: 24px;
+          padding-bottom: 24px;
         }
         &__label {
             font-size: 16px;

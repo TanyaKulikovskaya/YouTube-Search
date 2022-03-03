@@ -9,32 +9,33 @@
           class="form"
           @submit.prevent="logIn"
         >
-          <div class="form-field">
-            <label
-              for="email"
-              class="form__label"
-            >
-              E-mail
-            </label>
-            <input
-              id="email"
-              type="email"
-              v-model="email"
-              class="form__input"
-               @blur="$v.email.$touch()"
-            />
-            <span
-              v-if="$v.email.$error"
-              class="error form__error"
-            >
-              <template v-if="!$v.email.required">
-                Поле обязательно для заполнения
-              </template>
-              <template v-else>
-                Поле должно быть валидно
-              </template>
-            </span>
-          </div>
+          <div class="form__fields">
+            <div class="form-field">
+              <label
+                for="email"
+                class="form__label"
+              >
+                E-mail
+              </label>
+              <input
+                id="email"
+                type="email"
+                v-model="email"
+                class="form__input"
+                @blur="$v.email.$touch()"
+              />
+              <span
+                v-if="$v.email.$error"
+                class="error form__error"
+              >
+                <template v-if="!$v.email.required">
+                  Поле обязательно для заполнения
+                </template>
+                <template v-else>
+                  Поле должно быть валидно
+                </template>
+              </span>
+            </div>
             <div class="form-field">
               <label
                 for="password"
@@ -73,6 +74,7 @@
                 Поле обязательно для заполнения
               </span>
             </div>
+          </div>
             <button
               type="submit"
               class="btn btn--primary form__btn"
@@ -155,6 +157,27 @@ export default {
     .form {
       max-width: 334px;
       margin: 0 auto;
+      &__fields {
+        margin-bottom: 16px;
+      }
+      .form-field {
+        position: relative;
+        padding-bottom: 24px;
+        &__btn {
+          position: absolute;
+          top: 22px;
+          right: 12px;
+          z-index: 2;
+          border: none;
+          height: 46px;
+          border-top-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+          background-color: transparent;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+        }
+      }
       &__label {
         font-size: 16px;
         line-height: 22px;
@@ -178,24 +201,6 @@ export default {
           position: absolute;
           left: 0;
           font-size: 14px;
-      }
-      .form-field {
-        position: relative;
-        margin-bottom: 24px;
-        &__btn {
-          position: absolute;
-          top: 22px;
-          right: 12px;
-          z-index: 2;
-          border: none;
-          height: 46px;
-          border-top-right-radius: $radius;
-          border-bottom-right-radius: $radius;
-          background-color: transparent;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-        }
       }
       &__btn {
         min-width: 176px;
