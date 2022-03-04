@@ -8,6 +8,9 @@ export default {
   SET_LOGOUT(state) {
     state.token = '';
   },
+  SET_VIDEOS_TO_STATE(state, videos) {
+    state.videos = videos;
+  },
   CHANGE_SEARCH_STRING(state, query) {
     state.searchString = query;
   },

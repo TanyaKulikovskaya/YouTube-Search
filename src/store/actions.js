@@ -1,23 +1,31 @@
 import AuthUser from '../services/AuthUser';
+import VideosAPI from '../services/VideosAPI';
 import FavouritesUser from '../services/FavouritesUser';
 
 export default {
-  LOGIN({ commit }, credentials) {
-    return AuthUser.login(credentials)
-      .then((response) => {
-        commit('AUTH_SUCCESS', response.accessToken);
-        return Promise.resolve(response.accessToken);
-      },
-      (error) => {
-        commit('AUTH_ERROR');
-        return Promise.reject(error);
-      });
+  async LOGIN({ commit }, credentials) {
+    try {
+      const response = await AuthUser.login(credentials);
+      commit('AUTH_SUCCESS', response.accessToken);
+    } catch {
+      commit('AUTH_ERROR');
+    }
   },
   LOGOUT({ commit }) {
     AuthUser.logout();
     commit('SET_LOGOUT');
     FavouritesUser.clearFavourites();
     commit('CLEAR_FAVOURITES');
+  },
+  async GET_VIDEOS_FROM_API({ commit, getters }) {
+    const maxResults = getters.MAX_RESULTS;
+    const query = getters.SEARCH_STRING;
+    try {
+      const response = await VideosAPI.getVideosFromApi(maxResults, query);
+      commit('SET_VIDEOS_TO_STATE', response.items);
+    } catch (error) {
+      console.log(error);
+    }
   },
   SET_SEARCH_STRING({ commit }, payload) {
     commit('CHANGE_SEARCH_STRING', payload);

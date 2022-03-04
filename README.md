@@ -1,15 +1,15 @@
 # YouTube-Search
 
-## [Node.js](https://nodejs.org/)
+### [Node.js](https://nodejs.org/)
 ``` 
 version 14.19.0
 ```
-## Project setup
+### Project setup
 ```
 npm install
 ```
 
-## Run [JSON Server Auth](https://www.npmjs.com/package/json-server-auth)
+### Run [JSON Server Auth](https://www.npmjs.com/package/json-server-auth)
 ``` 
 npx json-server-auth db.json
 ```

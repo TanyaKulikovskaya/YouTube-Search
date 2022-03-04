@@ -2,7 +2,7 @@
   <div>
     <the-header />
     <initial-search-form
-      v-if="!videos.length > 0"
+      v-if="!VIDEOS.length > 0"
       @search="search"
     />
     <template v-else>
@@ -10,7 +10,7 @@
         @search="search"
         @save="showModal"
       />
-      <search-results :videos="videos" />
+      <search-results :videos="VIDEOS" />
     </template>
     <modal
         v-if="isModalVisible"
@@ -22,15 +22,12 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex';
 import TheHeader from '../components/TheHeader.vue';
 import InitialSearchForm from '../components/InitialSearchForm.vue';
 import FinalSearchForm from '../components/FinalSearchForm.vue';
 import SearchResults from '../components/SearchResults.vue';
 import Modal from '../components/Modal.vue';
-
-import apiKey from '../../config';
 
 export default {
   name: 'Home',
@@ -43,43 +40,18 @@ export default {
   },
   data() {
     return {
-      videos: [],
-      api: {
-        baseUrl: 'https://www.googleapis.com/youtube/v3/search?',
-        part: 'snippet',
-        maxResults: 12,
-        q: '',
-        key: apiKey.YOUTUBE_API_KEY,
-      },
       isModalVisible: false,
     };
   },
-  mounted() {
-    if (this.SEARCH_STRING && !this.videos.length > 0) {
-      this.search();
-    }
-  },
   computed: {
     ...mapGetters(['SEARCH_STRING']),
+    ...mapGetters(['VIDEOS']),
   },
   methods: {
+    ...mapActions(['GET_VIDEOS_FROM_API']),
     ...mapActions(['ADD_REQUEST_TO_FAVOURITES']),
     search() {
-      this.api.q = this.SEARCH_STRING;
-      const {
-        baseUrl, part, maxResults, q, key,
-      } = this.api;
-      const apiUrl = `${baseUrl}part=${part}&maxResults=${maxResults}&q=${q}&key=${key}`;
-      this.getData(apiUrl);
-    },
-    getData(apiUrl) {
-      axios.get(apiUrl)
-        .then((response) => {
-          this.videos = response.data.items;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.GET_VIDEOS_FROM_API();
     },
     showModal() {
       this.isModalVisible = true;
