@@ -18,13 +18,13 @@
           <div class="form__fields">
             <div class="form-field">
               <label
-                for="request"
+                for="requestValue"
                 class="form__label"
               >
                 Запрос
               </label>
               <input
-                id="request"
+                id="requestValue"
                 v-model="requestValue"
                 class="form__input"
                 @blur="$v.requestValue.$touch()"
@@ -89,8 +89,8 @@ export default {
   name: 'Modal',
   props: {
     request: {
-      type: String,
-      default: '',
+      type: Object,
+      default: () => ({}),
     },
     isRequestEditable: {
       type: Boolean,
@@ -99,8 +99,8 @@ export default {
   },
   data() {
     return {
-      requestValue: this.request,
-      requestTitle: '',
+      requestValue: this.request.request,
+      requestTitle: this.request.requestTitle || '',
     };
   },
   validations: {
@@ -116,9 +116,11 @@ export default {
       this.$emit('close');
     },
     saveRequest() {
+      const ID = this.request.requestID || Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
       const data = {
-        request: this.request,
+        request: this.requestValue,
         requestTitle: this.requestTitle,
+        requestID: ID,
       };
       this.$emit('save', data);
     },

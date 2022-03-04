@@ -30,9 +30,18 @@ export default {
   SET_SEARCH_STRING({ commit }, payload) {
     commit('CHANGE_SEARCH_STRING', payload);
   },
-  ADD_REQUEST_TO_FAVOURITES({ commit }, request) {
-    FavouritesUser.addRequestToFavourites(request);
-    commit('SET_REQUEST_TO_FAVOURITES', request);
+  ADD_REQUEST_TO_FAVOURITES({ commit, getters }, request) {
+    function findRequestIndex(query) {
+      return getters.FAVOURITES.findIndex((item) => item.requestID === query.requestID);
+    }
+    const requestIndex = findRequestIndex(request);
+    if (requestIndex >= 0) {
+      FavouritesUser.updateRequestInFavourites(request);
+      commit('CHANGE_REQUEST_IN_FAVOURITES', request);
+    } else {
+      FavouritesUser.addRequestToFavourites(request);
+      commit('SET_REQUEST_TO_FAVOURITES', request);
+    }
   },
   DELETE_REQUEST_FROM_FAVOURITES({ commit }, index) {
     FavouritesUser.deleteRequestFromFavourites(index);

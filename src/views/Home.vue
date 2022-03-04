@@ -14,7 +14,7 @@
     </template>
     <modal
         v-if="isModalVisible"
-        :request="SEARCH_STRING"
+        :request="request"
         @close="closeModal"
         @save="saveRequestToFavourites"
       />
@@ -46,6 +46,9 @@ export default {
   computed: {
     ...mapGetters(['SEARCH_STRING']),
     ...mapGetters(['VIDEOS']),
+    request() {
+      return { request: this.SEARCH_STRING };
+    },
   },
   methods: {
     ...mapActions(['GET_VIDEOS_FROM_API']),

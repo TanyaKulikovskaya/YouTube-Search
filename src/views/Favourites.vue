@@ -24,7 +24,7 @@
             :request="request"
             :isRequestEditable=true
             @close="closeModal"
-            @save="saveChangedRequest"
+            @save="saveRequest"
         >
             <template v-slot:header>
                 Изменить запрос
@@ -55,13 +55,14 @@ export default {
   data() {
     return {
       isModalVisible: false,
-      request: '',
+      request: null,
     };
   },
   computed: {
     ...mapGetters(['FAVOURITES']),
   },
   methods: {
+    ...mapActions(['ADD_REQUEST_TO_FAVOURITES']),
     ...mapActions(['DELETE_REQUEST_FROM_FAVOURITES']),
     ...mapActions(['SET_SEARCH_STRING']),
     executeFavouritesItem(index) {
@@ -71,7 +72,7 @@ export default {
     },
     editFavouritesItem(index) {
       this.isModalVisible = true;
-      this.request = this.FAVOURITES[index].request;
+      this.request = this.FAVOURITES[index];
     },
     removeFavouritesItem(index) {
       this.DELETE_REQUEST_FROM_FAVOURITES(index);
@@ -79,9 +80,9 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
-    saveChangedRequest(data) {
+    saveRequest(data) {
       this.isModalVisible = false;
-      console.log(data);
+      this.ADD_REQUEST_TO_FAVOURITES(data);
     },
   },
 };

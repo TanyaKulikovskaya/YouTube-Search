@@ -17,6 +17,9 @@ export default {
   SET_REQUEST_TO_FAVOURITES(state, request) {
     state.favourites.push(request);
   },
+  CHANGE_REQUEST_IN_FAVOURITES(state, request) {
+    state.favourites = state.favourites.map((item) => (item.requestID !== request.requestID ? item : request));
+  },
   CLEAR_FAVOURITES(state) {
     state.favourites = JSON.parse('[]');
   },
