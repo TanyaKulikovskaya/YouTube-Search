@@ -10,6 +10,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     token: localStorage.getItem('token') || '',
+    videos: [],
+    maxResults: 12,
     searchString: '',
     favourites: JSON.parse(localStorage.getItem('favourites') || '[]'),
   },
