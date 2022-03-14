@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="container"
-    :class="{ right: displayMode === 'list' }"
-  >
+  <div class="container">
     <div class="results-header">
       <h3 class="results-header__title">
         Видео по запросу
@@ -89,10 +86,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container.right {
-  position: relative;
-  left: 33px;
-}
 .results-header {
   display: flex;
   justify-content: space-between;
@@ -131,5 +124,10 @@ export default {
   gap: 28px 20px;
   justify-content: center;
   padding-bottom: 28px;
+}
+@media screen and (max-width: 768px) {
+  .videos-grid {
+    grid-template-columns: repeat(auto-fill, 216px);
+  }
 }
 </style>

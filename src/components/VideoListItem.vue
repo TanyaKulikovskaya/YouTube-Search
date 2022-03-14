@@ -4,11 +4,11 @@
       :href="`https://youtube.com/watch?v=${video.id.videoId}`"
       target="_blank"
       :title="video.snippet.title"
+      class="video-item__link"
     >
       <img
         :src="`${video.snippet.thumbnails.medium.url}`"
         :alt="`${video.snippet.title}`"
-        class="video-item__img"
       />
     </a>
     <div class="video-item__body">
@@ -37,8 +37,7 @@ export default {
   &:not(:last-child) {
     margin-bottom: 32px;
   }
-  a {
-    display: block;
+  &__link {
     width: 157px;
     height: 88px;
     margin-right: 20px;
