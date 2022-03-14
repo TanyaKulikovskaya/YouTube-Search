@@ -90,18 +90,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .favourites {
-        margin-top: 40px;
-        color: $black;
-        &__title {
-            margin-bottom: 40px;
-            font-weight: normal;
-            font-size: 28px;
-            line-height: 40px;
-        }
-    }
-    .favourites-list {
-        background-color: $white;
-        border-radius: $radius;
-    }
+.favourites {
+  margin-top: 40px;
+  color: $black;
+  &__title {
+      margin-bottom: 40px;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 40px;
+  }
+}
+.favourites-list {
+  background-color: $white;
+  border-radius: $radius;
+}
 </style>

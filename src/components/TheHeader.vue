@@ -1,5 +1,5 @@
 <template>
-   <header class="header">
+    <header class="header">
        <div class="container">
            <nav class="header__menu menu">
                <div class="menu__nav">
@@ -50,54 +50,54 @@ export default {
 </script>
 
 <style lang="scss">
-    .header {
-        height: 80px;
-        background-color: $white;
-        .container {
-            height: 100%;
-        }
-        .menu {
-            height: 100%;
+.header {
+    height: 80px;
+    background-color: $white;
+    .container {
+        height: 100%;
+    }
+    .menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__nav {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            &__nav {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                a {
-                    color: $secondary-gray;
-                }
+            height: 100%;
+            a {
+                color: $secondary-gray;
             }
-            .menu__link  {
-                margin-right: 40px;
+        }
+        .menu__link  {
+            margin-right: 40px;
+            display: block;
+        }
+        .menu__btn {
+            margin-right: 20px;
+            color: $primary-blue;
+            cursor: pointer;
+        }
+        .link {
+            font-size: 18px;
+            line-height: 28px;
+        }
+        .router-link-exact-active {
+            color: $primary-blue;
+            span {
+                position: relative;
+            }
+            span::after {
+                content: '';
                 display: block;
-            }
-            .menu__btn {
-                margin-right: 20px;
-                color: $primary-blue;
-                cursor: pointer;
-            }
-            .link {
-                font-size: 18px;
-                line-height: 28px;
-            }
-            .router-link-exact-active {
-                color: $primary-blue;
-                span {
-                    position: relative;
-                }
-                span::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    bottom: -26px;
-                    left: 0;
-                    height: 2px;
-                    width: 100%;
-                    background-color: $primary-blue;
-                }
+                position: absolute;
+                bottom: -26px;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                background-color: $primary-blue;
             }
         }
     }
+}
 </style>

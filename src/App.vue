@@ -13,14 +13,14 @@
 }
 
 .fade {
-    &-enter-active,
-    &-leave-active {
-      transition: all .5s ease;
-    }
-    &-enter-from,
-    &-leave-to {
-      opacity: 0;
-      transform: scale(0.9);
-    }
+  &-enter-active,
+  &-leave-active {
+    transition: all .5s ease;
+  }
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 }
 </style>

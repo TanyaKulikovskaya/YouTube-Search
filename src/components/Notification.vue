@@ -1,6 +1,8 @@
 <template>
     <div class="notification">
-        <p class="notification__title">Поиск сохранён в разделе «Избранное»</p>
+        <p class="notification__title">
+            Поиск сохранён в разделе «Избранное»
+        </p>
         <router-link :to="{ name: 'favourites' }">
             <span class="notification__link">
                 Перейти в избранное

@@ -32,30 +32,30 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-    .video-item {
-        a {
-            display: block;
-            width: 100%;
-            height: 138px;
-            margin-bottom: 8px;
-        }
-        &__body {
-            text-align: left;
-        }
-        &__title {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 16px;
-            margin-bottom: 8px;
-            text-overflow: ellipsis;
-            word-wrap: break-word;
-            overflow: hidden;
-            height: 32px;
-        }
-        &__subtitle {
-            font-size: 14px;
-            line-height: 16px;
-            color: $primary-gray;
-        }
-    }
+.video-item {
+  a {
+    display: block;
+    width: 100%;
+    height: 138px;
+    margin-bottom: 8px;
+  }
+  &__body {
+    text-align: left;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    height: 32px;
+  }
+  &__subtitle {
+    font-size: 14px;
+    line-height: 16px;
+    color: $primary-gray;
+  }
+}
 </style>

@@ -4,53 +4,55 @@
     :class="{ right: displayMode === 'list' }"
   >
     <div class="results-header">
-        <h3 class="results-header__title">Видео по запросу</h3>
-        <div class="results-header__actions">
-          <button
-                @click="changeDisplayMode('list')"
-                class="results-header__icon icon"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ active: displayMode === 'list' }">
-              <g opacity="0.3">
-                <path d="M8 6H21" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 12H21" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 18H21" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 6H3.01" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 12H3.01" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 18H3.01" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-            </svg>
-            </button>
-            <button
-                @click="changeDisplayMode('grid')"
-                class="results-header__icon icon"
-            >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ active: displayMode === 'grid' }">
-              <g opacity="0.3">
-                <path d="M10 5H5V10H10V5Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M19 5H14V10H19V5Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M19 14H14V19H19V14Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 14H5V19H10V14Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-            </svg>
-            </button>
-          </div>
+      <h3 class="results-header__title">
+        Видео по запросу
+      </h3>
+      <div class="results-header__actions">
+        <button
+          class="results-header__icon icon"
+          @click="changeDisplayMode('list')"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ active: displayMode === 'list' }">
+            <g opacity="0.3">
+              <path d="M8 6H21" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 12H21" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 18H21" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 6H3.01" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 12H3.01" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 18H3.01" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </button>
+        <button
+          class="results-header__icon icon"
+          @click="changeDisplayMode('grid')"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ active: displayMode === 'grid' }">
+            <g opacity="0.3">
+              <path d="M10 5H5V10H10V5Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 5H14V10H19V5Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 14H14V19H19V14Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 14H5V19H10V14Z" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </button>
+      </div>
     </div>
     <div v-if="displayMode === 'list'">
       <ul class="videos-list">
         <VideoListItem
-            v-for="video in videos"
-            :key="video.id.videoId"
-            :video="video"
+          v-for="video in videos"
+          :key="video.id.videoId"
+          :video="video"
         />
       </ul>
     </div>
     <div v-if="displayMode === 'grid'">
       <ul class="videos-grid">
         <VideoGridItem
-            v-for="video in videos"
-            :key="video.id.videoId"
-            :video="video"
+          v-for="video in videos"
+          :key="video.id.videoId"
+          :video="video"
         />
       </ul>
     </div>
@@ -58,7 +60,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import VideoGridItem from './VideoGridItem.vue';
 import VideoListItem from './VideoListItem.vue';
 
@@ -78,9 +79,6 @@ export default {
     return {
       displayMode: 'list',
     };
-  },
-  computed: {
-    ...mapGetters(['SEARCH_STRING']),
   },
   methods: {
     changeDisplayMode(displayMode) {

@@ -61,6 +61,6 @@ export default {
     font-size: 16px;
     line-height: 20px;
     color: $primary-gray;
-    }
+  }
 }
 </style>

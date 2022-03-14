@@ -136,76 +136,76 @@ export default {
   height: 100vh;
 }
 .form-wrapper {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 510px;
-    background-color: $white;
-    border: $border;
-    padding: 40px 0 60px;
-    &__title {
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 28px;
-      margin-bottom: 20px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 510px;
+  background-color: $white;
+  border: $border;
+  padding: 40px 0 60px;
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+  &__logo {
+    margin-bottom: 32px;
+  }
+  .form {
+    max-width: 334px;
+    margin: 0 auto;
+    &__fields {
+      margin-bottom: 16px;
     }
-    &__logo {
-      margin-bottom: 32px;
-    }
-    .form {
-      max-width: 334px;
-      margin: 0 auto;
-      &__fields {
-        margin-bottom: 16px;
-      }
-      .form-field {
-        position: relative;
-        padding-bottom: 24px;
-        &__btn {
-          position: absolute;
-          top: 22px;
-          right: 12px;
-          z-index: 2;
-          border: none;
-          height: 46px;
-          border-top-right-radius: $radius;
-          border-bottom-right-radius: $radius;
-          background-color: transparent;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-        }
-      }
-      &__label {
-        font-size: 16px;
-        line-height: 22px;
-        color: $primary-gray;
-      }
-      &__input {
-        height: 48px;
-        border-radius: $radius;
-        padding: 12px 15px;
-        font-size: 20px;
-        line-height: 24px;
-        &:focus {
-          border: $primary-border;
-          background-color: $secondary-blue;
-          &~.form-field__btn svg path {
-            stroke: $primary-blue;
-          }
-        }
-      }
-      &__error {
-          position: absolute;
-          left: 0;
-          font-size: 14px;
-      }
+    .form-field {
+      position: relative;
+      padding-bottom: 24px;
       &__btn {
-        min-width: 176px;
-        border-radius: $small-radius;
+        position: absolute;
+        top: 22px;
+        right: 12px;
+        z-index: 2;
+        border: none;
+        height: 46px;
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
       }
     }
+    &__label {
+      font-size: 16px;
+      line-height: 22px;
+      color: $primary-gray;
+    }
+    &__input {
+      height: 48px;
+      border-radius: $radius;
+      padding: 12px 15px;
+      font-size: 20px;
+      line-height: 24px;
+      &:focus {
+        border: $primary-border;
+        background-color: $secondary-blue;
+        &~.form-field__btn svg path {
+          stroke: $primary-blue;
+        }
+      }
+    }
+    &__error {
+        position: absolute;
+        left: 0;
+        font-size: 14px;
+    }
+    &__btn {
+      min-width: 176px;
+      border-radius: $small-radius;
+    }
+  }
 }
 </style>
