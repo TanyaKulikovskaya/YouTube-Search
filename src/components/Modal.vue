@@ -1,11 +1,14 @@
 <template>
   <div>
-    <div
-        class="modal-backdrop"
-        @click="close"
-    >
+    <transition name="modal-fade" appear>
+      <div
+          class="modal-backdrop"
+          @click="close"
+      >
     </div>
-    <div class="modal">
+    </transition>
+    <transition name="modal-pop" appear>
+      <div class="modal">
         <h2 class="modal__title">
           <slot name="header">
             Сохранить запрос
@@ -79,6 +82,7 @@
           </div>
         </form>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -192,5 +196,28 @@ export default {
             border-radius: $radius;
         }
     }
+}
+.modal-fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .5s linear;
+  }
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+.modal-pop {
+  &-enter-active,
+  &-leave-active {
+    transition: all .5s ease;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
 }
 </style>
