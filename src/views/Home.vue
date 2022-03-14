@@ -13,11 +13,12 @@
       <search-results :videos="VIDEOS" />
     </template>
     <modal
-        v-if="isModalVisible"
-        :request="request"
-        @close="closeModal"
-        @save="saveRequestToFavourites"
-      />
+      v-body-scroll-lock="isModalVisible"
+      v-if="isModalVisible"
+      :request="request"
+      @close="closeModal"
+      @save="saveRequestToFavourites"
+    />
   </div>
 </template>
 
@@ -47,7 +48,9 @@ export default {
     ...mapGetters(['SEARCH_STRING']),
     ...mapGetters(['VIDEOS']),
     request() {
-      return { request: this.SEARCH_STRING };
+      return {
+        request: this.SEARCH_STRING,
+      };
     },
   },
   methods: {

@@ -1,42 +1,43 @@
 <template>
-    <div>
-        <the-header />
-        <div class="container">
-            <div class="favourites">
-                <h1 class="favourites__title">Избранное</h1>
-                <ul
-                    v-if="FAVOURITES.length > 0"
-                    class="favourites-list"
-                >
-                    <FavouritesItem
-                        v-for="(item, index) in FAVOURITES"
-                        :key="index"
-                        :favourites_item="item"
-                        @executeItem="executeFavouritesItem(index)"
-                        @editItem="editFavouritesItem(index)"
-                        @removeItem="removeFavouritesItem(index)"
-                    />
-                </ul>
-            </div>
-        </div>
-        <modal
-            v-if="isModalVisible"
-            :request="request"
-            :isRequestEditable=true
-            @close="closeModal"
-            @save="saveRequest"
+  <div>
+    <the-header />
+    <div class="container">
+      <div class="favourites">
+        <h1 class="favourites__title">Избранное</h1>
+        <ul
+          v-if="FAVOURITES.length > 0"
+          class="favourites-list"
         >
-            <template v-slot:header>
-                Изменить запрос
-            </template>
-            <template v-slot:cancel>
-                Не изменять
-            </template>
-            <template v-slot:action>
-                Изменить
-            </template>
-        </modal>
+          <FavouritesItem
+            v-for="(item, index) in FAVOURITES"
+            :key="index"
+            :favourites_item="item"
+            @executeItem="executeFavouritesItem(index)"
+            @editItem="editFavouritesItem(index)"
+            @removeItem="removeFavouritesItem(index)"
+          />
+        </ul>
+      </div>
     </div>
+      <modal
+        v-body-scroll-lock="isModalVisible"
+        v-if="isModalVisible"
+        :request="request"
+        :isRequestEditable=true
+        @close="closeModal"
+        @save="saveRequest"
+      >
+        <template v-slot:header>
+          Изменить запрос
+        </template>
+        <template v-slot:cancel>
+          Не изменять
+        </template>
+        <template v-slot:action>
+          Изменить
+        </template>
+      </modal>
+  </div>
 </template>
 
 <script>
