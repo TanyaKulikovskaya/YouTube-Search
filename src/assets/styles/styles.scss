@@ -83,3 +83,20 @@ label {
 .error {
     color: $error;
 }
+
+@media screen and (max-width: 576px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .btn {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}

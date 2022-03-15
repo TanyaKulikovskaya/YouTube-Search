@@ -141,7 +141,8 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 510px;
+  max-width: 510px;
+  width: 100%;
   background-color: $white;
   border: $border;
   padding: 40px 0 60px;
@@ -205,6 +206,16 @@ export default {
     &__btn {
       min-width: 176px;
       border-radius: $small-radius;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .form-wrapper {
+    max-width: 90%;
+    .form {
+      max-width: 100%;
+      padding-left: 12px;
+      padding-right: 12px;
     }
   }
 }

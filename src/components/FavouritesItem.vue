@@ -70,7 +70,7 @@ export default {
     line-height: 20px;
     cursor: pointer;
     &:not(:last-child) {
-        margin-right: 30px;
+      margin-right: 30px;
     }
   }
   &__btn--primary {
@@ -80,5 +80,14 @@ export default {
     color: $error;
   }
 }
-
+@media screen and (max-width: 480px) {
+  .favourites-item {
+    padding: 12px 16px;
+    &__btn {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}
 </style>

@@ -69,11 +69,11 @@ export default {
                 color: $secondary-gray;
             }
         }
-        .menu__link  {
-            margin-right: 40px;
+        &__link  {
             display: block;
+            margin-right: 40px;
         }
-        .menu__btn {
+        &__btn {
             margin-right: 20px;
             color: $primary-blue;
             cursor: pointer;
@@ -96,6 +96,21 @@ export default {
                 height: 2px;
                 width: 100%;
                 background-color: $primary-blue;
+            }
+        }
+    }
+}
+@media screen and (max-width: 576px) {
+    .header {
+        .menu {
+            &__link {
+                margin-right: 20px;
+            }
+            &__btn {
+                margin-right: 0px;
+            }
+            .link {
+                font-size: 14px;
             }
         }
     }

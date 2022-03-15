@@ -149,7 +149,8 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 510px;
+  max-width: 510px;
+  width: 100%;
   padding: 36px 40px;
   background-color: $white;
   box-shadow: 0px 10px 50px rgba(19, 144, 229, 0.8);
@@ -194,6 +195,26 @@ export default {
     &__btn {
       min-width: 210px;
       border-radius: $radius;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .modal {
+    max-width: 90%;
+    padding: 22px 10px;
+    .form {
+      &__btn {
+        min-width: 160px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .modal {
+    .form {
+      &__btn {
+        min-width: 139px;
+      }
     }
   }
 }

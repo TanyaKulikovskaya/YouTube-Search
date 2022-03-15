@@ -50,7 +50,10 @@ export default {
 <style lang="scss" scoped>
 .form-wrapper {
   max-width: 686px;
-  margin: 220px auto 0;
+  margin-top: 220px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
   text-align: center;
   &__title {
     font-size: 36px;
@@ -63,7 +66,10 @@ export default {
     &__input {
       height: 52px;
       border-radius: $radius;
-      padding: 14px 165px 14px 15px;
+      padding-top: 14px;
+      padding-right: 165px;
+      padding-bottom: 14px;
+      padding-left: 15px;
       font-size: 20px;
       line-height: 24px;
       &::placeholder {
@@ -89,5 +95,24 @@ export default {
     }
   }
 }
-
+@media screen and (max-width: 768px) {
+  .form-wrapper {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .form-wrapper {
+    max-width: 686px;
+    margin-top: 120px;
+    .form {
+      &__input {
+        padding-right: 105px;
+        font-size: 16px;
+      }
+      &__btn {
+        min-width: 90px;
+      }
+    }
+  }
+}
 </style>

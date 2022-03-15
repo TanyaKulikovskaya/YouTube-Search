@@ -38,18 +38,20 @@ export default {
     margin-bottom: 32px;
   }
   &__link {
-    width: 157px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 157px;
     height: 88px;
     margin-right: 20px;
   }
   &__body {
     text-align: left;
-    max-width: 510px;
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 20px;
   }
   &__title {
     font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
     margin-bottom: 8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -57,9 +59,18 @@ export default {
     overflow: hidden;
   }
   &__subtitle {
-    font-size: 16px;
-    line-height: 20px;
     color: $primary-gray;
+  }
+}
+@media screen and (max-width: 576px) {
+  .video-item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+    &__link {
+      flex-basis: 120px;
+      height: 72px;
+    }
   }
 }
 </style>

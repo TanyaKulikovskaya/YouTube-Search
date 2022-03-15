@@ -130,4 +130,9 @@ export default {
     grid-template-columns: repeat(auto-fill, 216px);
   }
 }
+@media screen and (max-width: 480px) {
+  .videos-grid {
+    grid-template-columns: fit-content(80%);
+  }
+}
 </style>

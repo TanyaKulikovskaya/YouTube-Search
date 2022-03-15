@@ -87,7 +87,10 @@ export default {
     &__input {
       height: 52px;
       border-radius: $radius;
-      padding: 14px 204px 14px 15px;
+      padding-top: 14px;
+      padding-right: 204px;
+      padding-bottom: 14px;
+      padding-left: 15px;
       font-size: 20px;
       line-height: 24px;
       &::placeholder {
@@ -131,6 +134,23 @@ export default {
         border-bottom-right-radius: $radius;
         background-color: $primary-blue;
       }
+  }
+}
+@media screen and (max-width: 576px) {
+  .form-wrapper {
+    margin: 40px auto;
+    .form {
+      &__input {
+        padding-right: 144px;
+        font-size: 16px;
+      }
+      &__btn--icon {
+        right: 105px;
+      }
+      &__btn--button {
+        min-width: 90px;
+      }
+    }
   }
 }
 </style>
