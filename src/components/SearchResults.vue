@@ -41,6 +41,7 @@
           v-for="video in videos"
           :key="video.id.videoId"
           :video="video"
+          class="videos__item"
         />
       </ul>
     </div>
@@ -50,6 +51,7 @@
           v-for="video in videos"
           :key="video.id.videoId"
           :video="video"
+          class="videos__item"
         />
       </ul>
     </div>
@@ -57,6 +59,7 @@
 </template>
 
 <script>
+import gsap from 'gsap';
 import VideoGridItem from './VideoGridItem.vue';
 import VideoListItem from './VideoListItem.vue';
 
@@ -77,9 +80,23 @@ export default {
       displayMode: 'list',
     };
   },
+  mounted() {
+    this.animateList();
+  },
+  updated() {
+    this.animateList();
+  },
   methods: {
     changeDisplayMode(displayMode) {
       this.displayMode = displayMode;
+    },
+    animateList() {
+      gsap.from('.videos__item', {
+        opacity: 0,
+        y: 40,
+        duration: 1.2,
+        stagger: 0.1,
+      });
     },
   },
 };
