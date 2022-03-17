@@ -7,6 +7,7 @@
       class="video-item__link"
     >
       <img
+        v-if="video.snippet.thumbnails.medium.url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null"
         :src="`${video.snippet.thumbnails.medium.url}`"
         :alt="`${video.snippet.title}`"
       />
@@ -43,6 +44,7 @@ export default {
     flex-basis: 157px;
     height: 88px;
     margin-right: 20px;
+    background-color: $img-bg-color;
   }
   &__body {
     text-align: left;

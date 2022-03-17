@@ -4,8 +4,10 @@
       :href="`https://youtube.com/watch?v=${video.id.videoId}`"
       target="_blank"
       :title="video.snippet.title"
+      class="video-item__link"
     >
       <img
+        v-if="video.snippet.thumbnails.medium.url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null"
         :src="`${video.snippet.thumbnails.medium.url}`"
         :alt="`${video.snippet.title}`"
         class="video-item__img"
@@ -38,6 +40,10 @@ export default {
     width: 100%;
     height: 138px;
     margin-bottom: 8px;
+  }
+  &__link {
+    margin-bottom: 8px;
+    background-color: $img-bg-color;
   }
   &__body {
     text-align: left;
