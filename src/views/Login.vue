@@ -75,6 +75,7 @@
               </span>
             </div>
           </div>
+          <div class="form-field">
             <button
               type="submit"
               class="btn btn--primary form__btn"
@@ -82,6 +83,13 @@
             >
               Войти
             </button>
+            <span
+                v-if="showError"
+                class="error form__error"
+            >
+              Проверьте правильность введенных данных.
+            </span>
+          </div>
         </form>
       </div>
   </div>
@@ -101,6 +109,7 @@ export default {
       email: '',
       password: '',
       passwordFieldType: 'password',
+      showError: false,
     };
   },
   validations: {
@@ -124,8 +133,8 @@ export default {
       };
       this.LOGIN(data)
         .then(() => this.$router.replace({ name: 'home' }))
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          this.showError = true;
         });
     },
   },
@@ -199,9 +208,14 @@ export default {
       }
     }
     &__error {
+        display: block;
+        width: 100%;
         position: absolute;
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
         font-size: 14px;
+        line-height: 24px;
     }
     &__btn {
       min-width: 176px;
