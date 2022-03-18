@@ -123,7 +123,7 @@ export default {
         password: this.password,
       };
       this.LOGIN(data)
-        .then(() => this.$router.push('/'))
+        .then(() => this.$router.replace({ name: 'home' }))
         .catch((error) => {
           console.log(error);
         });

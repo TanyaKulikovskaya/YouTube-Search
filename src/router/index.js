@@ -46,8 +46,10 @@ router.beforeEach((to, from, next) => {
       return;
     }
     next('/login');
-  } else {
+  } else if (!store.getters.IS_LOGGED_IN) {
     next();
+  } else {
+    next({ name: 'home' });
   }
 });
 
