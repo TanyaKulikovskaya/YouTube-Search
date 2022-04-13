@@ -7,6 +7,8 @@ config.js
 .env.local
 .env.*.local
 
+db.json
+
 # Log files
 npm-debug.log*
 yarn-debug.log*

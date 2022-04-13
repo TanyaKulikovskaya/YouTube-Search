@@ -1,32 +1,20 @@
 # YouTube-Search
 
-### [Node.js](https://nodejs.org/)
-``` 
-version 14.19.0
-```
-### Project setup
-```
-npm install
-```
+### Built with
 
-### Run [JSON Server Auth](https://www.npmjs.com/package/json-server-auth)
-``` 
-npx json-server-auth db.json
-```
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+* [Vue.JS](https://vuejs.org/)
+* [Vuex](https://vuex.vuejs.org/) (state management)
+* [Vue Router](https://router.vuejs.org/) (navigation between views)
+* [Axios](https://axios-http.com/) (making an HTTP requests)
+* [JSON Server Auth](https://github.com/jeremyben/json-server-auth) (JWT authentication middleware for JSON Server)
+* [Vuelidate](https://vuelidate.js.org/) (model-based validation)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Features
 
-### Lints and fixes files
-```
-npm run lint
-```
+This project implements the following features:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* JWT authentication
+* Searching for videos using [YouTube Data API v3](https://developers.google.com/youtube/v3/docs)
+* Changing the view of search resultes
+* Saving search query to the favourites
+* Editing, executing and removing favourite search query
