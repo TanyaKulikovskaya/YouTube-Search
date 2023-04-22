@@ -15,6 +15,6 @@ This project implements the following features:
 
 * JWT authentication
 * Searching for videos using [YouTube Data API v3](https://developers.google.com/youtube/v3/docs)
-* Changing the view of search resultes
+* Changing the view of search results
 * Saving search query to the favourites
 * Editing, executing and removing favourite search query
